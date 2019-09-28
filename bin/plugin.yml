@@ -1,0 +1,5 @@
+name: Infected
+version: 0.1
+main: me.therom.infected.core.Core
+commands:
+  infected:
