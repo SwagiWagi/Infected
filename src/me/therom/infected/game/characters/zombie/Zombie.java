@@ -1,4 +1,4 @@
-package me.therom.infected.game.characters;
+package me.therom.infected.game.characters.zombie;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -9,6 +9,7 @@ import org.bukkit.craftbukkit.v1_11_R1.CraftWorld;
 import me.therom.infected.game.ZombieType;
 import net.minecraft.server.v1_11_R1.EntityPlayer;
 import net.minecraft.server.v1_11_R1.EntityZombie;
+import net.minecraft.server.v1_11_R1.PathfinderGoalMeleeAttack;
 import net.minecraft.server.v1_11_R1.PathfinderGoalMoveTowardsTarget;
 import net.minecraft.server.v1_11_R1.PathfinderGoalNearestAttackableTarget;
 import net.minecraft.server.v1_11_R1.PathfinderGoalSelector;
@@ -21,13 +22,14 @@ public class Zombie extends EntityZombie
 	private Location spawnLocation;
 	
 	@SuppressWarnings("rawtypes")
-	public Zombie(String name, ZombieType zombieType, Location spawnLocation)
+	Zombie(String name, Location spawnLocation)
 	{
 		super(((CraftWorld) spawnLocation.getWorld()).getHandle());
 		this.name = name;
-		this.zombieType = zombieType;
 		this.spawnLocation = spawnLocation;
 		
+	    Collection goalB = (Collection) getPrivateField("b", PathfinderGoalSelector.class, goalSelector); goalB.clear();
+	    Collection goalC = (Collection) getPrivateField("c", PathfinderGoalSelector.class, goalSelector); goalC.clear();
         Collection targetB = (Collection) getPrivateField("b", PathfinderGoalSelector.class, targetSelector); targetB.clear();
         Collection targetC = (Collection) getPrivateField("c", PathfinderGoalSelector.class, targetSelector); targetC.clear();
         
@@ -35,8 +37,15 @@ public class Zombie extends EntityZombie
         this.setHealth(50);
         this.setCustomName(name);
         this.setCustomNameVisible(true);
-        this.targetSelector.a(0, new PathfinderGoalNearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
-        this.goalSelector.a(20, new PathfinderGoalMoveTowardsTarget(this, 30.0D, 25.0F));
+	}
+	
+	void setZombieType(ZombieType zombieType)
+	{
+		if (zombieType.equals(ZombieType.regular))
+		{
+			this.targetSelector.a(0, new PathfinderGoalNearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
+			this.goalSelector.a(20, new PathfinderGoalMeleeAttack(this, 1, true));
+		}
 	}
 	
 	public String getName()

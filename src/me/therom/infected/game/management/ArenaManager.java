@@ -9,7 +9,7 @@ import org.bukkit.configuration.ConfigurationSection;
 
 import me.therom.infected.game.Arena;
 import me.therom.infected.game.ZombieType;
-import me.therom.infected.game.characters.Zombie;
+import me.therom.infected.game.characters.zombie.Zombie;
 
 public class ArenaManager
 {

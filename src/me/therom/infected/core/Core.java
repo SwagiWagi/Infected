@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.therom.infected.game.characters.CustomEntityRegistry;
-import me.therom.infected.game.characters.Zombie;
+import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.game.listeners.signs.SignListener;
 
 public class Core extends JavaPlugin

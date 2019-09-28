@@ -1,4 +1,4 @@
-package me.therom.infected.game;
+package me.therom.infected.game.management;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -6,7 +6,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.therom.infected.core.Config;
 import me.therom.infected.core.Core;
-import me.therom.infected.game.characters.Zombie;
+import me.therom.infected.game.Arena;
+import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.utils.ChatUtils;
 
 public class GameManager

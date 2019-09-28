@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import me.therom.infected.game.characters.Zombie;
+import me.therom.infected.game.characters.zombie.Zombie;
+import me.therom.infected.game.management.GameManager;
 import me.therom.infected.utils.ChatUtils;
 import net.md_5.bungee.api.ChatColor;
 
