@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import me.therom.infected.core.Config;
 import me.therom.infected.core.Core;
 import me.therom.infected.game.Arena;
+import me.therom.infected.game.characters.zombie.RegularZombie;
 import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.utils.ChatUtils;
 
@@ -85,8 +86,7 @@ public class GameManager
 	{
 		for (Zombie zombie : arena.getZombies())
 		{
-	        zombie.setPosition(zombie.getSpawnLocation().getX(), zombie.getSpawnLocation().getY(), zombie.getSpawnLocation().getZ());
-	        zombie.getWorld().addEntity(zombie);
+			zombie.spawnZombie();
 		}
 	}
 }

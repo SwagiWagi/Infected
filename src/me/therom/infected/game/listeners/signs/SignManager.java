@@ -27,20 +27,7 @@ public class SignManager
 		return instance;
 	}
 
-	private SignManager()
-	{
-		f = new File(Core.getCore().getDataFolder(), "signs.yml");
-
-		fc = YamlConfiguration.loadConfiguration(f);
-	}
-
-	private File f;
-	private FileConfiguration fc;
-
-	FileConfiguration getConfiguration()
-	{
-		return fc;
-	}
+	private SignManager() {}
 
 	public boolean isJoinSign(Block b)
 	{

@@ -11,6 +11,9 @@ import net.minecraft.server.v1_11_R1.PacketPlayOutTitle.EnumTitleAction;
 
 public class ChatUtils
 {
+	
+	private ChatUtils() {}
+	
 	public static final String INFECTED_PREFIX_NORMAL = ChatColor.GREEN + "[" + ChatColor.YELLOW + "Infected" + ChatColor.GREEN + "] ";
 	public static final String ERROR_PREFIX = INFECTED_PREFIX_NORMAL + ChatColor.DARK_RED + "[ERROR] ";
 	public static final String INFECTED_PREFIX_NOT_COLORIZED = "[Infected] ";

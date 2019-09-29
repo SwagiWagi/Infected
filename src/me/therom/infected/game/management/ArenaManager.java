@@ -10,6 +10,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import me.therom.infected.game.Arena;
 import me.therom.infected.game.ZombieType;
 import me.therom.infected.game.characters.zombie.Zombie;
+import me.therom.infected.game.characters.zombie.ZombieBuilder;
 
 public class ArenaManager
 {
@@ -146,13 +147,15 @@ public class ArenaManager
 				
 				for (String zombie : section.getKeys(false))
 				{
-					zombies.add(new Zombie(
-							zombie, ZombieType.valueOf(ArenaConfig.getInstance().getConfiguration().getString(arenaId + ".zombies." + zombie + ".zombie-type")), 
+					zombies.add(new ZombieBuilder(
+							zombie,
 							new Location(
 							Bukkit.getWorld(ArenaConfig.getInstance().getConfiguration().getString(arenaId + ".zombies." + zombie + ".spawn-location.world")),
 							ArenaConfig.getInstance().getConfiguration().getDouble(arenaId + ".zombies." + zombie + ".spawn-location.x"),
 							ArenaConfig.getInstance().getConfiguration().getDouble(arenaId + ".zombies." + zombie + ".spawn-location.y"),
-							ArenaConfig.getInstance().getConfiguration().getDouble(arenaId + ".zombies." + zombie + ".spawn-location.z"))));
+							ArenaConfig.getInstance().getConfiguration().getDouble(arenaId + ".zombies." + zombie + ".spawn-location.z")), 
+							ZombieType.valueOf(ArenaConfig.getInstance().getConfiguration().getString(arenaId + ".zombies." + zombie + ".zombie-type")))
+							.build());
 				}
 			}
 		}
