@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import me.therom.infected.game.characters.ArenaPlayer;
 import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.game.management.GameManager;
 import me.therom.infected.utils.ChatUtils;
@@ -20,7 +21,7 @@ public class Arena
 	
 	private int maxTimePlayAble;
 	
-	private ArrayList<Player> players;
+	private ArrayList<ArenaPlayer> players;
 	
 	private ArrayList<Zombie> zombies;
 	
@@ -34,7 +35,7 @@ public class Arena
 		this.spawn = spawn;
 		this.maxPlayers = maxPlayers;
 		this.maxTimePlayAble = maxTimePlayAble;
-		this.players = new ArrayList<Player>();
+		this.players = new ArrayList<ArenaPlayer>();
 		this.zombies = zombies;
 	}
 	
@@ -58,25 +59,25 @@ public class Arena
 		return maxTimePlayAble;
 	}
 
-	public ArrayList<Player> getPlayers()
+	public ArrayList<ArenaPlayer> getPlayers()
 	{
 		return this.players;
 	}
 	
-	public void setPlayers(ArrayList<Player> players)
+	public void setPlayers(ArrayList<ArenaPlayer> players)
 	{
 		this.players = players;
 	}
 	
-	public void addPlayer(Player player)
+	public void addPlayer(ArenaPlayer player)
 	{
 		this.players.add(player);
 		
-		player.sendMessage(ChatUtils.INFECTED_PREFIX_NORMAL + ChatColor.GREEN + "Joined queue, arena: " + ChatColor.GREEN + getId() + ChatColor.GREEN + ".");
+		player.getPlayer().sendMessage(ChatUtils.INFECTED_PREFIX_NORMAL + ChatColor.GREEN + "Joined queue, arena: " + ChatColor.GREEN + getId() + ChatColor.GREEN + ".");
 		
-		for (Player p : players)
+		for (ArenaPlayer p : players)
 		{
-			p.sendMessage(ChatUtils.INFECTED_PREFIX_NORMAL + ChatColor.GREEN + player.getDisplayName() + ChatColor.GREEN + " Has joined the game!");
+			p.getPlayer().sendMessage(ChatUtils.INFECTED_PREFIX_NORMAL + ChatColor.GREEN + player.getPlayer().getDisplayName() + ChatColor.GREEN + " Has joined the game!");
 		}
 		
 		if (players.size() == getMaxPlayers())

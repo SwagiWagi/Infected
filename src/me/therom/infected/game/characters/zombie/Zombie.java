@@ -14,7 +14,7 @@ public abstract class Zombie extends EntityZombie
 	private String name;
 	private Location spawnLocation;
 	
-	public Zombie(String name, Location spawnLocation) {
+	protected Zombie(String name, Location spawnLocation) {
 		super(((CraftWorld) spawnLocation.getWorld()).getHandle());
 
 		this.name = name;
@@ -43,4 +43,5 @@ public abstract class Zombie extends EntityZombie
         this.setPosition(this.getSpawnLocation().getX(), this.getSpawnLocation().getY(), this.getSpawnLocation().getZ());
         this.getWorld().addEntity(this);
 	}
+	
 }

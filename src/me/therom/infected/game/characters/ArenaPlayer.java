@@ -7,8 +7,8 @@ import me.therom.infected.game.Arena;
 public class ArenaPlayer
 {
 	
-	Arena arena;
-	Player player;
+	private Arena arena;
+	private Player player;
 	
 	public ArenaPlayer(Arena arena, Player player)
 	{

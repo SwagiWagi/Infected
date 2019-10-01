@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.therom.infected.game.characters.CustomEntityRegistry;
 import me.therom.infected.game.characters.zombie.RegularZombie;
 import me.therom.infected.game.listeners.signs.SignListener;
+import me.therom.infected.game.listeners.zombies.ZombieListener;
 
 public class Core extends JavaPlugin
 {
@@ -31,17 +32,26 @@ public class Core extends JavaPlugin
 			System.out.println("Config not ok fuck man comeon");
 			Bukkit.getPluginManager().disablePlugin(this);
 		}
+		
+		registerEvents();
 
-		Bukkit.getPluginManager().registerEvents(new SignListener(), this);
-		
-		CustomEntityRegistry.registerCustomEntity(54, "Zombie", RegularZombie.class);
-		
-		System.out.println("OK");
+		registerCustomEntities();
 	}
 
 	public void onDisable()
 	{
 
+	}
+	
+	private void registerEvents()
+	{
+		Bukkit.getPluginManager().registerEvents(new SignListener(), this);
+		Bukkit.getPluginManager().registerEvents(new ZombieListener(), this);
+	}
+	
+	private void registerCustomEntities()
+	{
+		CustomEntityRegistry.registerCustomEntity(54, "Zombie", RegularZombie.class);
 	}
 
 }

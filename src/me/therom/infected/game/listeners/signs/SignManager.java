@@ -1,16 +1,11 @@
 package me.therom.infected.game.listeners.signs;
 
-import java.io.File;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.block.SignChangeEvent;
 
 import me.therom.infected.core.Config;
-import me.therom.infected.core.Core;
 
 public class SignManager
 {

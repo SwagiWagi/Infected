@@ -7,7 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import me.therom.infected.core.Config;
 import me.therom.infected.core.Core;
 import me.therom.infected.game.Arena;
-import me.therom.infected.game.characters.zombie.RegularZombie;
+import me.therom.infected.game.characters.ArenaPlayer;
 import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.utils.ChatUtils;
 
@@ -24,9 +24,9 @@ public class GameManager
 
 	public void startGame()
 	{
-		for (Player p : arena.getPlayers())
+		for (ArenaPlayer p : arena.getPlayers())
 		{
-			p.teleport(arena.getSpawn());
+			p.getPlayer().teleport(arena.getSpawn());
 		}
 
 		countdown();
@@ -62,9 +62,9 @@ public class GameManager
 					cc = ChatColor.GOLD;
 				}
 
-				for (Player p : arena.getPlayers())
+				for (ArenaPlayer p : arena.getPlayers())
 				{
-					ChatUtils.sendTitle(p, cc + "Game starting in", cc + String.valueOf(countDownlength));
+					ChatUtils.sendTitle(p.getPlayer(), cc + "Game starting in", cc + String.valueOf(countDownlength));
 				}
 				
 				countDownlength--;
@@ -74,9 +74,9 @@ public class GameManager
 
 	private void manageGame()
 	{
-		for (Player p : arena.getPlayers())
+		for (ArenaPlayer p : arena.getPlayers())
 		{
-			ChatUtils.sendTitle(p, ChatColor.GREEN + "Game has started", "");
+			ChatUtils.sendTitle(p.getPlayer(), ChatColor.GREEN + "Game has started", "");
 		}
 		
 		waveOne();
