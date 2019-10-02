@@ -43,6 +43,7 @@ public class Config
 	public void reloadConfig()
 	{
 		Core.getCore().reloadConfig();
+		//reload the arneas.yml
 	}
 
 	public String[] getSignStructure()

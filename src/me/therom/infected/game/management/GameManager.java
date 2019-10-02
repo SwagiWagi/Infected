@@ -1,14 +1,16 @@
 package me.therom.infected.game.management;
 
+import java.util.ArrayList;
+
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.therom.infected.core.Config;
 import me.therom.infected.core.Core;
 import me.therom.infected.game.Arena;
 import me.therom.infected.game.characters.ArenaPlayer;
-import me.therom.infected.game.characters.zombie.Zombie;
+import me.therom.infected.game.waves.RegularWave;
+import me.therom.infected.game.waves.Wave;
 import me.therom.infected.utils.ChatUtils;
 
 public class GameManager
@@ -16,10 +18,13 @@ public class GameManager
 	private Arena arena;
 	
 	private int countDownlength = Config.getInstance().getCountdownLength();
+	
+	private ArrayList<Wave> waves;
 
 	public GameManager(Arena arena)
 	{
 		this.arena = arena;
+		this.waves = new ArrayList<Wave>();
 	}
 
 	public void startGame()
@@ -40,6 +45,11 @@ public class GameManager
         }.runTaskLater(Core.getCore(), countDownlength * 20 + 120);
 	}
 
+	public Wave getWave(int index)
+	{
+		return this.waves.get(index);
+	}
+	
 	private void countdown()
 	{
 		new BukkitRunnable()
@@ -79,14 +89,16 @@ public class GameManager
 			ChatUtils.sendTitle(p.getPlayer(), ChatColor.GREEN + "Game has started", "");
 		}
 		
-		waveOne();
+		waves();
 	}
 	
-	private void waveOne()
+	private void waves()
 	{
-		for (Zombie zombie : arena.getZombies())
-		{
-			zombie.spawnZombie();
-		}
+		Wave w = new RegularWave(this.arena.getZombies());
+		
+		w.startWave();
+		
+		this.waves.add(w);
 	}
+	
 }

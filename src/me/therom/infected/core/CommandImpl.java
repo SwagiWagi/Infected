@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.therom.infected.game.ZombieType;
+import me.therom.infected.game.characters.zombie.ZombieType;
 import me.therom.infected.game.management.ArenaConfig;
 import me.therom.infected.game.management.ArenaManager;
 import me.therom.infected.utils.ChatUtils;

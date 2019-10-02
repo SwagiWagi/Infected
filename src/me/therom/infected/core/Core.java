@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.therom.infected.game.characters.CustomEntityRegistry;
 import me.therom.infected.game.characters.zombie.RegularZombie;
+import me.therom.infected.game.listeners.GameListener;
 import me.therom.infected.game.listeners.signs.SignListener;
 import me.therom.infected.game.listeners.zombies.ZombieListener;
 
@@ -47,6 +48,7 @@ public class Core extends JavaPlugin
 	{
 		Bukkit.getPluginManager().registerEvents(new SignListener(), this);
 		Bukkit.getPluginManager().registerEvents(new ZombieListener(), this);
+		Bukkit.getPluginManager().registerEvents(new GameListener(), this);
 	}
 	
 	private void registerCustomEntities()

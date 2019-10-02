@@ -6,11 +6,13 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 
 import me.therom.infected.game.Arena;
-import me.therom.infected.game.ZombieType;
+import me.therom.infected.game.characters.ArenaPlayer;
 import me.therom.infected.game.characters.zombie.Zombie;
 import me.therom.infected.game.characters.zombie.ZombieBuilder;
+import me.therom.infected.game.characters.zombie.ZombieType;
 
 public class ArenaManager
 {
@@ -161,5 +163,34 @@ public class ArenaManager
 		}
 		
 		return zombies;
+	}
+	
+	public Arena getPlayersArena(Player p)
+	{
+		for (Arena arena : this.arenas.values())
+		{
+			for (ArenaPlayer arenaPlayer : arena.getPlayers())
+			{
+				if (arenaPlayer.getPlayer() == p)
+				{
+					return arenaPlayer.getArena();
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	public ArenaPlayer getArenaPlayer(Player p, Arena a)
+	{
+		for (ArenaPlayer ap : a.getPlayers())
+		{
+			if (ap.getPlayer() == p)
+			{
+				return ap;
+			}
+		}
+		
+		return null;
 	}
 }

@@ -10,6 +10,9 @@ public class ArenaPlayer
 	private Arena arena;
 	private Player player;
 	
+	private int kills;
+	private int deaths;
+	
 	public ArenaPlayer(Arena arena, Player player)
 	{
 		this.arena = arena;
@@ -26,4 +29,23 @@ public class ArenaPlayer
 		return this.player;
 	}
 	
+	public void addKill()
+	{
+		this.kills++;
+	}
+	
+	public int getKills()
+	{
+		return this.kills;
+	}
+	
+	public void addDeath()
+	{
+		this.deaths++;
+	}
+	
+	public int getDeaths()
+	{
+		return this.deaths;
+	}
 }

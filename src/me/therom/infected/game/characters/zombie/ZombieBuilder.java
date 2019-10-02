@@ -2,8 +2,6 @@ package me.therom.infected.game.characters.zombie;
 
 import org.bukkit.Location;
 
-import me.therom.infected.game.ZombieType;
-
 public class ZombieBuilder
 {
 	private Zombie zombie;

@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import me.therom.infected.core.Core;
-import me.therom.infected.game.ZombieType;
+import me.therom.infected.game.characters.zombie.ZombieType;
 
 public class ArenaConfig
 {

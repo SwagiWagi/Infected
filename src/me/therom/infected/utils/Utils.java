@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 import org.apache.commons.lang3.EnumUtils;
 
-import me.therom.infected.game.ZombieType;
+import me.therom.infected.game.characters.zombie.ZombieType;
 
 public class Utils
 {
