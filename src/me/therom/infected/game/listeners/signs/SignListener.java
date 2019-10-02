@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import me.therom.infected.game.Arena;
 import me.therom.infected.game.characters.ArenaPlayer;
 import me.therom.infected.game.management.ArenaManager;
+import me.therom.infected.game.management.SignManager;
 import me.therom.infected.utils.ChatUtils;
 
 public class SignListener implements Listener

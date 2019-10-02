@@ -1,4 +1,4 @@
-package me.therom.infected.game.listeners.signs;
+package me.therom.infected.game.management;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

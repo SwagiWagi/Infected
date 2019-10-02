@@ -9,6 +9,7 @@ import me.therom.infected.core.Config;
 import me.therom.infected.core.Core;
 import me.therom.infected.game.Arena;
 import me.therom.infected.game.characters.ArenaPlayer;
+import me.therom.infected.game.waves.ConstantWave;
 import me.therom.infected.game.waves.RegularWave;
 import me.therom.infected.game.waves.Wave;
 import me.therom.infected.utils.ChatUtils;
@@ -94,11 +95,14 @@ public class GameManager
 	
 	private void waves()
 	{
-		Wave w = new RegularWave(this.arena.getZombies());
+		Wave cw = new ConstantWave(this.arena.getZombies());
+		Wave rw = new RegularWave(this.arena.getZombies());
 		
-		w.startWave();
+		rw.startWave();
+		cw.startWave();
 		
-		this.waves.add(w);
+		this.waves.add(rw);
+		this.waves.add(cw);
 	}
 	
 }

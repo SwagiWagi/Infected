@@ -3,12 +3,11 @@ package me.therom.infected.game.waves;
 import java.util.ArrayList;
 
 import me.therom.infected.game.characters.zombie.Zombie;
-import net.minecraft.server.v1_11_R1.EntityLiving;
 
 public abstract class Wave {
 
 	private ArrayList<Zombie> zombies;
-	private boolean inProgress;
+	protected boolean inProgress;
 	
 	public Wave(ArrayList<Zombie> zombies)
 	{
@@ -21,7 +20,7 @@ public abstract class Wave {
 		
 		for (Zombie z : this.zombies)
 		{
-			z.spawnZombie();
+			z.spawn();
 		}
 	}
 	
@@ -40,11 +39,11 @@ public abstract class Wave {
 		return this.zombies;
 	}
 	
-	public Zombie getZombie(EntityLiving zombie)
+	public Zombie getZombie(Zombie zombie)
 	{
 		for (Zombie z : this.zombies)
 		{
-			if (z.getUniqueID() == zombie.getUniqueID())
+			if (zombie == z)
 			{
 				return z;
 			}

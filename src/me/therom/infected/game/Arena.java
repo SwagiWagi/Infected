@@ -3,7 +3,6 @@ package me.therom.infected.game;
 import java.util.ArrayList;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 
 import me.therom.infected.game.characters.ArenaPlayer;
 import me.therom.infected.game.characters.zombie.Zombie;

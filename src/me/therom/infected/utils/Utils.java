@@ -1,8 +1,7 @@
 package me.therom.infected.utils;
 
-import java.lang.reflect.Field;
-
 import org.apache.commons.lang3.EnumUtils;
+import org.bukkit.Location;
 
 import me.therom.infected.game.characters.zombie.ZombieType;
 
@@ -16,26 +15,12 @@ public class Utils
 		return EnumUtils.isValidEnum(ZombieType.class, zombieType);
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public static Object getPrivateField(String fieldName, Class clazz, Object object)
-    {
-        Field field;
-        Object o = null;
-
-        try
-        {
-            field = clazz.getDeclaredField(fieldName);
-
-            field.setAccessible(true);
-
-            o = field.get(object);
-        }
-        catch(Exception ex)
-        {
-        	return null;
-        }	
-
-        return o;
+    public static double distance(Location a, Location b){
+        return Math.sqrt(square(a.getX() - b.getX()) + square(a.getY() - b.getY()) + square(a.getZ() - b.getZ()));
     }
-
+   
+    private static double square(double x){
+        return x * x;
+    }
+	
 }

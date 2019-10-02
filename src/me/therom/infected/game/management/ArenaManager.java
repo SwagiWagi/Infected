@@ -181,13 +181,47 @@ public class ArenaManager
 		return null;
 	}
 	
-	public ArenaPlayer getArenaPlayer(Player p, Arena a)
+	public ArenaPlayer getArenaPlayer(Player p)
+	{
+		for (Arena arena : this.arenas.values())
+		{
+			for (ArenaPlayer arenaPlayer : arena.getPlayers())
+			{
+				if (arenaPlayer.getPlayer() == p)
+				{
+					return arenaPlayer;
+				}
+			}
+		}
+		
+		return null;
+	}
+
+	
+	public ArenaPlayer getArenaPlayerFromArena(Player p, Arena a)
 	{
 		for (ArenaPlayer ap : a.getPlayers())
 		{
 			if (ap.getPlayer() == p)
 			{
 				return ap;
+			}
+		}
+		
+		return null;
+	}
+	
+	public me.therom.infected.game.characters.zombie.Zombie getZombie(org.bukkit.entity.Zombie zombie)
+	{
+		for (Arena arena : this.arenas.values())
+		{
+			for (Zombie z : arena.getZombies())
+			{
+				if (z.getZombie() != null && 
+						z.getZombie().getUniqueId() == zombie.getUniqueId())
+				{
+					return z;
+				}
 			}
 		}
 		
